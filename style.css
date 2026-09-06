@@ -1,0 +1,38 @@
+:root { color-scheme: light dark; }
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0 20px 60px;
+  font: 17px/1.75 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  color: #1a1d21; background: #fff; overflow-wrap: break-word;
+}
+.top { max-width: 720px; margin: 0 auto; padding: 28px 0 18px;
+       border-bottom: 1px solid #e3e6ea; }
+.home { font-size: 15px; font-weight: 700; letter-spacing: .02em;
+        color: #1a1d21; text-decoration: none; }
+.tagline { margin: 6px 0 0; font-size: 14px; color: #6b7280; }
+.post, .list { max-width: 720px; margin: 0 auto; padding-top: 26px; }
+.post h1 { font-size: 30px; line-height: 1.28; margin: 0 0 10px; }
+.post h2 { font-size: 22px; line-height: 1.35; margin: 40px 0 12px; }
+.post h3 { font-size: 18px; margin: 28px 0 10px; }
+.post p { margin: 0 0 18px; }
+.post img { max-width: 100%; height: auto; border-radius: 8px; margin: 8px 0 24px; }
+.post blockquote { margin: 22px 0; padding: 2px 0 2px 18px;
+                   border-left: 3px solid #d1d5db; color: #4b5563; }
+.post ul { padding-left: 22px; }
+.post li { margin-bottom: 8px; }
+.meta { color: #6b7280; font-size: 14px; margin: 0 0 26px; }
+.entry { padding: 18px 0; border-bottom: 1px solid #eceff2; }
+.entry a { color: #1a1d21; text-decoration: none; font-size: 19px;
+           font-weight: 600; line-height: 1.4; }
+.entry a:hover { text-decoration: underline; }
+.entry time { display: block; color: #6b7280; font-size: 13px; margin-top: 5px; }
+.foot { max-width: 720px; margin: 40px auto 0; padding-top: 20px;
+        border-top: 1px solid #e3e6ea; font-size: 14px; }
+.foot a { color: #6b7280; text-decoration: none; }
+@media (prefers-color-scheme: dark) {
+  body { color: #e6e8ea; background: #14171a; }
+  .home, .entry a, .post h1 { color: #e6e8ea; }
+  .top, .foot { border-color: #262b30; }
+  .entry { border-color: #21262b; }
+  .post blockquote { border-color: #3a4149; color: #a8b0b8; }
+}
