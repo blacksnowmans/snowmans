@@ -9,6 +9,8 @@ body {
        border-bottom: 1px solid #e3e6ea; }
 .home { font-size: 15px; font-weight: 700; letter-spacing: .02em;
         color: #1a1d21; text-decoration: none; }
+.lang-switch { float: right; font-size: 13px; color: #6b7280; text-decoration: none; }
+.lang-switch:hover { text-decoration: underline; }
 .tagline { margin: 6px 0 0; font-size: 14px; color: #6b7280; }
 .post, .list { max-width: 720px; margin: 0 auto; padding-top: 26px; }
 .post h1 { font-size: 30px; line-height: 1.28; margin: 0 0 10px; }
