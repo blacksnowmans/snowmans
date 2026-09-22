@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jev 모델 특징과 기존 LLM 차이점 분석 — 블랙 스노우맨 브리프</title>
+<meta name="description" content="AI 모델의 패러다임이 &#x27;생성&#x27;에서 &#x27;결정&#x27;으로 급격하게 이동하고 있습니다. 최근 Typesafe AI가 공개한 Jev(제브) 모델 은 단순히 글을 쓰는 LLM의 한계를 넘어, 소프트웨어가 직접 처리할 수 있는 확률적 판단을 내놓으며 개발자 생태계에 큰 충격을 던졌습니다. ChatGPT">
+<link rel="canonical" href="https://snowmans.sunphs2002.workers.dev/ko/posts/1007-jev-모델-특징과-기존-llm-차이점-분석.html">
+<meta property="og:title" content="Jev 모델 특징과 기존 LLM 차이점 분석">
+<meta property="og:description" content="AI 모델의 패러다임이 &#x27;생성&#x27;에서 &#x27;결정&#x27;으로 급격하게 이동하고 있습니다. 최근 Typesafe AI가 공개한 Jev(제브) 모델 은 단순히 글을 쓰는 LLM의 한계를 넘어, 소프트웨어가 직접 처리할 수 있는 확률적 판단을 내놓으며 개발자 생태계에 큰 충격을 던졌습니다. ChatGPT">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://res.cloudinary.com/fcs8sfgj/image/upload/v1790080284/ytblog/post1007_1.png">
+<link rel="stylesheet" href="../../style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6VH6TFNDE1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6VH6TFNDE1');</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d540751729ea4b4a813e081466d5b8f3"}'></script>
+</head><body>
+<header class="top"><a class="home" href="../index.html">블랙 스노우맨 브리프</a><a class="lang-switch" href="../../posts/1007-jev-모델-특징과-기존-llm-차이점-분석.html">English</a></header>
+<main class="post">
+  <h1>Jev 모델 특징과 기존 LLM 차이점 분석</h1>
+  <p class="meta"><time datetime="2026-09-22">2026년 09월 22일</time></p>
+  <p><img src="https://res.cloudinary.com/fcs8sfgj/image/upload/v1790080284/ytblog/post1007_1.png" alt="Jev 모델 특징과 기존 LLM 차이점 분석"></p>
+  
+AI 모델의 패러다임이 <b style="color:#1976d2;">'생성'에서 '결정'으로</b> 급격하게 이동하고 있습니다. 최근 Typesafe AI가 공개한 <span style="background-color:#fff9c4;">Jev(제브) 모델</span>은 단순히 글을 쓰는 LLM의 한계를 넘어, 소프트웨어가 직접 처리할 수 있는 확률적 판단을 내놓으며 개발자 생태계에 큰 충격을 던졌습니다. ChatGPT 공동 발명가 출신 디오고 알메이다가 설립한 이 회사는 기존 생성형 AI가 가진 속도와 비용의 굴레를 어떻게 벗어 던졌을까요? 
+
+<p style="text-align:center; margin:30px 0;"><img alt="본문 이미지 1" src="https://res.cloudinary.com/fcs8sfgj/image/upload/v1790080284/ytblog/post1007_1.png" style="max-width:100%; height:auto; border-radius:8px;"/></p>
+<h2>Jev 모델: 생성하지 않고 결정하는 인공지능</h2>
+<h3>기존 LLM과의 근본적 차이</h3>
+전통적인 LLM은 다음에 올 단어를 한 글자씩 예측하며 문장을 이어가는 <b style="color:#1976d2;">자기회귀(Autoregressive) 방식</b>을 취합니다. 이 과정은 아무리 성능이 좋아도 연산 비용과 응답 속도 면에서 필연적인 지연을 동반하죠. 하지만 Jev는 "어떤 단어를 쓸까?"를 고민하지 않습니다. 
+
+Jev는 <b style="color:#1976d2;">'결정'에만 집중하도록 설계된 모델</b>입니다. 사전에 정의된 선택지 중 하나를 고르거나(Choice), 예/아니오를 판단하고(Noul), 심각도나 확률을 점수(Score)로 매기는 작업만 수행합니다. 이처럼 출력 형식이 확정된 상태에서 확률 분포만을 반환하기 때문에, 생성형 AI가 겪는 환각 문제에서 자유롭고 연산 과정이 극도로 간결합니다. 
+
+이 모델은 단순히 데이터를 요약하거나 글을 쓰는 용도가 아닙니다. 소프트웨어와 소프트웨어 사이, 혹은 에이전트와 현실 시스템 사이를 연결하는 <b style="color:#d32f2f;">'의사결정 레이어'</b>로서의 역할을 수행합니다. 즉, AI가 뱉어낸 서술형 답변을 다시 파싱(Parsing)해서 코드로 변환해야 했던 기존의 번거로운 작업이 아예 필요 없어진 것입니다.
+
+<h3>속도와 비용의 파격적 혁신</h3>
+Jev의 핵심 지표는 놀랍습니다. 기존 모델 대비 <span style="background-color:#fff9c4;">20배에서 200배 빠른 속도</span>와 <span style="background-color:#fff9c4;">40배에서 400배 저렴한 비용</span>을 실현했습니다. 특히 "출력 토큰은 무료"라는 파격적인 정책은 개발자들이 비용 부담 없이 수많은 결정 루프를 돌릴 수 있게 합니다.
+
+실제로 27개 질문 퀘스트를 비교 테스트했을 때, Jev는 불과 <b style="color:#1976d2;">154ms</b> 만에 모든 처리를 완료했습니다. 다음으로 빠른 모델이 860ms를 소요한 것과 비교하면 압도적인 차이입니다. 9월 25일까지 Vercel AI Gateway를 통해 입출력 모두 무료로 제공되면서, 이미 수많은 개발자가 자신의 트레이딩 봇이나 자동화 툴에 Jev를 이식하고 있습니다.
+
+비용 효율성이 극대화되면서, 그동안 가성비 때문에 포기했던 실시간 데이터 분류 작업들이 이제는 AI 에이전트의 일상적인 기능으로 편입될 준비를 마쳤습니다. 100만 토큰당 저렴한 비용은 서비스 운영의 본질을 '생성'에서 '판단'으로 바꾸는 강력한 트리거가 될 것입니다.
+
+<h2>실제 현장에서의 활용 사례와 폭발적 반응</h2>
+<h3>트레이딩과 자율주행의 실시간 의사결정</h3>
+가장 눈에 띄는 사례는 트레이딩 자동화입니다. Jarrod Watts는 Jev를 활용해 300ms 블록마다 주문을 처리하는 봇을 구축했습니다. 비트코인 차트를 분석하고 <b style="color:#1976d2;">0.5초(500ms)라는 찰나의 시간</b> 안에 롱/숏 결정을 내리는 것은 기존의 느린 LLM으로는 상상조차 할 수 없던 일입니다.
+
+또한 테슬라 FSD(Full Self-Driving) 기능을 한 시간 만에 재구축했다는 사례도 인상적입니다. 복잡한 시각 정보를 토대로 멈출지, 주행할지를 결정하는 <b style="color:#d32f2f;">'예/아니오(Noul)' 판단의 신속함</b>이 자율주행이라는 생사가 달린 영역에서 즉각적인 반응성을 증명한 것이죠.
+
+패션 스타일링 자동화인 'Drape' 역시 상의와 하의를 선택하는 과정에서 Jev의 선택(Choice) 능력을 사용합니다. "캐주얼로 할까, 포멀로 할까?"와 같은 결정은 텍스트 생성이 아닌 분류의 영역이며, Jev는 이 영역에서 완벽하게 최적화된 성능을 보여줍니다.
+
+<h3>대규모 영상 분석과 유지보수</h3>
+소마 오스무는 300만 개의 리플레이 이벤트를 분석하여 '짜증 나는 클릭'과 'JS 오류'를 포착했습니다. 이를 바탕으로 <b style="color:#1976d2;">213개의 수정 PR을 자동으로 제출</b>하는 과정을 수행했는데, 이는 오류의 원인을 빠르게 분류해내는 Jev의 능력 없이는 불가능한 성과입니다. 
+
+뉴스 분류에서도 오퍼스(Opus)와 같은 범용 모델이 너무 느려 답답했던 개발자들은 이제 Jev를 통해 15개 브랜드에 최적화된 스토리를 0.4초 만에 골라내고 있습니다. 개발자가 수동으로 설정하던 복잡한 if-else 문을, 이제는 AI가 확률적으로 판단하고 코드가 그 결과를 받아 분기하는 구조가 표준으로 자리 잡을 것입니다.
+
+데이터의 양이 수백만 개를 넘어서는 상황에서, 생성형 AI의 '문장 만들기'는 사치에 가까운 비용 낭비였습니다. Jev는 그 사치를 거두어내고 오직 핵심 판단만을 제공함으로써 실질적인 <span style="background-color:#fff9c4;">AI 기반 자동화 루프</span>를 가능케 합니다.
+
+<h2>AI 시대의 새로운 인프라와 보안의 재정의</h2>
+<h3>OpenAI Astra for Law와 특정 분야 정복</h3>
+OpenAI가 공개한 'Astra for Law'는 특정 전문 분야를 공략하는 AI의 전략을 보여줍니다. 단순히 법률 지식을 아는 것을 넘어, 수십 년간 축적된 판례를 연결하고 계약서의 예외 조항을 잡아내며 <b style="color:#d32f2f;">위험을 전가하는 논리를 파악</b>합니다. 
+
+로펌 Wachtel, Lipton, Rosen &amp; Katz와의 협력은 기술이 단순히 지식을 전달하는 수준을 넘어 로펌의 '워크플로우' 자체에 녹아들고 있음을 시사합니다. 이는 AI가 범용 도구에서 특정 직군을 대체하는 전문 인프라로 변화하고 있다는 명확한 신호입니다.
+
+ChatGPT 데스크톱 앱에서 크롬 확장 프로그램을 지원하게 된 것 또한 의미심장합니다. 이제 브라우저 조작과 보안 설정까지 앱 내에서 관리하며, 중앙 배포형 보안 정책을 엔터프라이즈 레벨에서 구현할 수 있게 되었습니다. 이는 AI가 업무 도구의 메인 플랫폼으로 진화하고 있다는 증거입니다.
+
+<h3>해킹 사건이 시사하는 보안의 구멍</h3>
+하지만 기술의 속도를 보안이 따라가지 못하는 현상도 뚜렷합니다. 최근 오픈AI의 ChatGPT/Codex 계정이 외부 해킹 그룹에 의해 유출된 사건은 큰 충격을 주었습니다. 이미지 업로드 기능의 취약점을 이용해 악성 코드를 실행하고, GitHub PR 권한까지 탈취한 이 사건은 <b style="color:#d32f2f;">AI 기업들의 보안 취약성</b>을 적나라하게 드러냈습니다.
+
+결국 AI 에이전트가 API를 호출하고 파일을 수정하며 인프라를 제어할 수 있는 세상에서, 가장 중요한 질문은 "모델이 얼마나 똑똑한가"가 아니라 <b style="color:#d32f2f;">"이 행동이 정말 승인된 것인가"</b>입니다. Jev와 같은 '결정 모델'은 향후 이러한 보안 경계선에서 악성 행동을 사전에 차단하는 핵심 필터가 될 가능성이 높습니다.
+
+보안은 단순히 암호화하는 것이 아니라, AI의 다음 액션을 제어하고 감시하는 <span style="background-color:#fff9c4;">'결정의 검증'</span> 과정으로 넘어가야 합니다. 이번 해킹 사건은 보안이 AI 개발의 부차적인 숙제가 아닌, 핵심 아키텍처가 되어야 한다는 경종을 울렸습니다.
+
+<h2>AI가 AI를 만드는 재귀적 진화의 시대</h2>
+<h3>재귀적 자기 개선(RSI)의 현실화</h3>
+구글과 메릴랜드 대학이 공개한 'Dream-RSI' 논문은 AI가 스스로를 개선하는 방식에 대한 근본적인 변화를 담고 있습니다. AI가 잠자는 동안 가상으로 시뮬레이션을 돌려 다음 탐색 과정을 <b style="color:#1976d2;">162배 저렴하게 최적화</b>하는 것은, 인간이 일일이 프롬프트를 수정해주지 않아도 AI 스스로 성능을 끌어올리는 단계에 진입했음을 의미합니다.
+
+또한 GLM-5.3 모델이 자신의 서빙 인프라를 스스로 최적화하여 처리량을 3배 증가시킨 사례는, AI가 이제 <span style="background-color:#fff9c4;">'엔지니어의 영역'까지 잠식</span>하고 있다는 공포와 경외심을 동시에 느끼게 합니다. 앤트로픽의 통계에 따르면 자율 연구 비율은 3월 1%에서 8월 26%로 폭증했습니다. 
+
+내년에는 연구의 상당 부분이 AI에 의해 주도될 것이라는 전망은 더 이상 상상이 아닙니다. 이제 AI는 도구를 넘어, 도구를 만드는 도구를 관리하고 있습니다. 딥마인드 인스티튜트의 설립은 이러한 변화가 가져올 사회적 파장에 대해 본격적으로 논의해야 할 시점이 왔음을 방증합니다.
+
+<h3>개인적인 생각과 마무리</h3>
+이 모든 현상을 지켜보며 든 생각은 하나입니다. 우리는 지금 <b style="color:#d32f2f;">'속도'의 함정</b>에 빠져 있습니다. 샘 알트만은 지난주에 프론티어 속도를 늦추자고 합의했다가, 바로 다음 주에 역대급 출시를 예고하며 '풀악셀'을 밟고 있습니다. 말과 행동이 다른 이 기업들의 행보에서, AI 기술 경쟁은 이제 멈출 수 없는 폭주 기관차와 같다는 확신이 듭니다.
+
+AI가 브라우저를 조작하고, 스스로를 개선하며, 로봇을 지휘하는 시대를 맞이했습니다. 중요한 것은 기술을 따라가는 것이 아니라, 이 기술이 우리의 일상과 일자리에 어떤 균열을 낼지 직시하는 것입니다. AI가 AI를 개선하는 시대, 인간인 우리는 과연 어떤 판단을 내려야 할까요? 
+
+<div style="text-align:center; margin-bottom:30px;"><script src="https://ads-partners.coupang.com/g.js"></script><script>new PartnersCoupang.G({"id": 1023733, "template": "carousel", "trackingCode": "AF5038469", "width": "680", "height": "140"});</script><p style="margin:8px 0 0; font-size:12px; color:#999;">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></div>
+우리가 만든 기술이 스스로의 한계를 넘어서는 이 순간, 질문의 끝에 무엇이 남을지 묵묵히 지켜보고 기록할 뿐입니다.
+
+<p>#AI #Jev #TypesafeAI #Gemini #OpenAI #AstraForLaw #AI에이전트 #재귀적자기개선 #RSI #딥마인드 #기술트렌드 #생성형AI #자동화 #코딩 #오픈소스 #AI보안 #샘알트만 #앤트로픽 #머신러닝 #인공지능뉴스 #AGI #테크 #개발자 #소프트웨어 #인프라 #디지털전환 #데이터분석 #로보틱스 #미래기술 #테크블로그</p><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Jev 모델 특징과 기존 LLM 차이점 분석", "image": ["https://res.cloudinary.com/fcs8sfgj/image/upload/v1790080284/ytblog/post1007_1.png"], "datePublished": "2026-09-22T21:28:48.526515+09:00", "dateModified": "2026-09-22T21:28:48.526515+09:00"}</script>
+</main>
+<footer class="foot"><a href="../index.html">← 전체 글</a> · <a href="../privacy.html">Privacy</a></footer>
+</body></html>
