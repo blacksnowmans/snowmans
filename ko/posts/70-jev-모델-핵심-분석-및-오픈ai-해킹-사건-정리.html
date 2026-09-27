@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jev 모델 핵심 분석 및 오픈AI 해킹 사건 정리 — 블랙 스노우맨 브리프</title>
+<meta name="description" content="요즘 개발자 커뮤니티나 테크 뉴스를 보면 &#x27;Jev&#x27; 라는 이름이 귀에 박힐 정도로 자주 들린다. 대충 또 새로운 챗봇이 나왔나 보다 하고 넘기기 십상이지만, 실체를 들여다보면 결이 완전히 다르다. 글을 쓰고 대화를 나누는 기존의 LLM(대규모 언어 모델)과는 완전히 노선을 달리하는, 그">
+<link rel="canonical" href="https://snowmans.sunphs2002.workers.dev/ko/posts/70-jev-모델-핵심-분석-및-오픈ai-해킹-사건-정리.html">
+<meta property="og:title" content="Jev 모델 핵심 분석 및 오픈AI 해킹 사건 정리">
+<meta property="og:description" content="요즘 개발자 커뮤니티나 테크 뉴스를 보면 &#x27;Jev&#x27; 라는 이름이 귀에 박힐 정도로 자주 들린다. 대충 또 새로운 챗봇이 나왔나 보다 하고 넘기기 십상이지만, 실체를 들여다보면 결이 완전히 다르다. 글을 쓰고 대화를 나누는 기존의 LLM(대규모 언어 모델)과는 완전히 노선을 달리하는, 그">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://res.cloudinary.com/fcs8sfgj/image/upload/v1790450090/ytblog/post70_1.png">
+<link rel="stylesheet" href="../../style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6VH6TFNDE1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6VH6TFNDE1');</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d540751729ea4b4a813e081466d5b8f3"}'></script>
+</head><body>
+<header class="top"><a class="home" href="../index.html">블랙 스노우맨 브리프</a><a class="lang-switch" href="../../posts/70-jev-모델-핵심-분석-및-오픈ai-해킹-사건-정리.html">English</a></header>
+<main class="post">
+  <h1>Jev 모델 핵심 분석 및 오픈AI 해킹 사건 정리</h1>
+  <p class="meta"><time datetime="2026-09-27">2026년 09월 27일</time></p>
+  <p><img src="https://res.cloudinary.com/fcs8sfgj/image/upload/v1790450090/ytblog/post70_1.png" alt="Jev 모델 핵심 분석 및 오픈AI 해킹 사건 정리"></p>
+  
+<p>요즘 개발자 커뮤니티나 테크 뉴스를 보면 <b style="color:#d32f2f;">'Jev'</b>라는 이름이 귀에 박힐 정도로 자주 들린다. 대충 또 새로운 챗봇이 나왔나 보다 하고 넘기기 십상이지만, 실체를 들여다보면 결이 완전히 다르다. 글을 쓰고 대화를 나누는 기존의 LLM(대규모 언어 모델)과는 완전히 노선을 달리하는, 그야말로 <b style="color:#1976d2;">'판단 전용' 모델</b>이 등장했기 때문이다.</p>
+<p>여기에 오픈에이아이가 법률 특화 모델을 내놓고 대규모 해킹 사태까지 겪는 등, AI 업계는 잠잠할 새 없이 풀악셀을 밟고 있다. 과연 이 급격한 변화의 흐름 속에서 우리는 무엇을 건져 올려야 할까?<br/><br/>냉정하게 팩트를 짚어보고, 이 기술들이 실무와 일상에 던지는 진짜 의미를 파헤쳐 보자. 📉</p>
+
+<p style="text-align:center; margin:30px 0;"><img alt="본문 이미지 1" src="https://res.cloudinary.com/fcs8sfgj/image/upload/v1790450090/ytblog/post70_1.png" style="max-width:100%; height:auto; border-radius:8px;"/></p>
+<h2>Jev의 등장과 구조: 대화가 아니라 '결정'을 위한 부품</h2>
+<h3>Jev 모델의 핵심 원리와 기존 LLM과의 결정적 차이</h3>
+<p>기존의 LLM은 다음 단어를 예측해 유려한 문장을 만들어내는 데 특화되어 있다. 하지만 이 방식은 출력을 생성하는 과정에서 파싱(Parsing)을 거쳐야 하기 때문에 속도가 상대적으로 느릴 수밖에 없다. 반면, ChatGPT를 공동 발명한 인물이 만든 새로운 모델 <span style="background-color:#fff9c4;">'Jev'는 문장을 쓰지 않는다.</span> 오직 '결정(Decision)'에만 집중한다.</p>
+<p>이 모델은 미리 정해진 형식 안에서 확률을 계산해 즉각적인 결정을 내린다. TypeSafe AI가 '시스템 원(System One)'이라 부르는 이 구조는, 심리학자 대니얼 카너먼이 말한 빠르고 직관적인 판단(System 1)에서 이름을 따왔다.<br/><br/>지능 단가가 내려가면 사용처가 폭발적으로 늘어난다는 '제본스 역설'을 모델 이름에 고스란히 담아낸 셈이다. 💡</p>
+<p>실제로 속도와 비용 면에서 보여주는 지표는 놀랍다. 기존 LLM 대비 최대 200배 빠르고, 비용은 최대 400배까지 저렴하다고 한다.<br/><br/>실제로 가벼운 모델들과 비교해도 Jev의 처리 속도는 압도적이다. (Jev: 154ms, GPT-5.6 루나: 860ms, GLM 5.3 Flash: 1,544ms) 출력 토큰이 사실상 무료로 제공된다는 점 덕분에 개발자들의 이목이 순식간에 집중되었다.</p>
+<h3>Choice, Noul, Score 세 가지 결정 방식의 실체</h3>
+<p>Jev가 처리하는 방식은 복잡하지 않다. 딱 세 가지 결정 타입만 존재하기 때문에 결과 도출이 빠르다. 첫째는 <b style="color:#1976d2;">Choice(선택)</b>로, 여러 선택지 중 하나를 고르는 방식이다. 예컨대 어떤 문의가 들어왔을 때 A가 61% 확률로 선택되면 'A 부서 담당'으로 즉시 결정한다. 둘째는 <b style="color:#1976d2;">Noul(예/아니오)</b>로, 맞다/아니다를 판정하는 방식이다. '완료되었는가?'라는 질문에 Yes/No를 확정해 준다.</p>
+<p>마지막은 <b style="color:#1976d2;">Score(점수)</b>로, 어느 정도인지 퍼센트로 수치화한다. '이 문제의 심각도는?'이라는 질문에 중간 57%, 심각 43% 등으로 확률을 매겨 리턴한다. 이처럼 정해진 스키마 안에서 값과 신뢰도만 돌려주기 때문에, 코드가 흐름을 소유하고 모델은 좁은 판단만 맡는 구조가 완성된다.</p>
+<p>다만 여기서 짚고 넘어가야 할 지점이 있다. TypeSafe 측은 '환각이 없다(Zero Hallucination)'고 주장하지만, 이는 <span style="background-color:#fff9c4;">스키마를 벗어난 타입 에러나 엉뚱한 값이 나오지 않는다는 뜻</span>일 뿐이다. 판단 자체의 정답 여부를 보장하는 것은 아니다. 실제 문서에서도 개별 답변의 정확성은 확률과 신뢰도로 다뤄야 한다고 선을 긋고 있다.</p>
+<h3>게임부터 트레이딩 봇까지, 실전 활용 사례들</h3>
+<p>이렇게 빠른 판단력을 무기로 Jev는 다양한 영역에서 실험되고 있다. 실시간으로 화면을 분석하여 총을 쏠지 도망갈지 결정하는 게임 플레이는 물론이고, 자산 가격 피드를 기반으로 '매수/매도/홀드'를 결정하는 트레이딩 봇에도 쓰인다. Monad 재단 수석 AI 엔지니어인 Jarrod Watts가 만든 <b style="color:#1976d2;">jev-trader</b>는 블록마다 호가창을 살펴보고 Jev에게 물어보는 방식을 시연했다.</p>
+<p>또한 Hyperliquid에서 다섯 종목을 동시에 모니터링하는 <b style="color:#1976d2;">jev-trade</b>나, Kraken 시세를 연동한 모의 거래 봇 <b style="color:#1976d2;">jev-market-reflex</b> 등 암호화폐 커뮤니티를 중심으로 실전 활용 사례가 쏟아져 나왔다. 그 외에도 300만 개의 리플레이 이벤트를 분석해 오류의 원인을 찾거나, 테슬라 풀 셀프 드라이빙(FSD)을 1시간도 안 되어 재구축하는 등 시각 정보를 바탕으로 빠르게 판단해야 하는 영역에서 강력한 무기가 되고 있다.</p>
+<div style="background-color:#ffebee; border-left:5px solid #ef5350; padding:20px; margin-bottom:30px; border-radius:4px;">
+<h4 style="margin:0 0 10px 0; color:#c62828; font-size:20px;">🔥 <b style="color:#d32f2f;">Jev 열풍의 이면, 우리가 냉정하게 봐야 할 한계</b></h4>
+<p>개발자들 사이에 밈처럼 번지며 수십 개의 오픈소스 대안(Laya, Bespoke Nimble, DiffusionGemma 등)이 쏟아지고 있지만, 여기에 휩쓸려 무작정 뛰어드는 건 위험하다. Jev는 대화하는 챗봇이 아니라 백엔드에서 조용히 분류를 돌리는 부품이다.<br/><br/>사람이 읽을 문장을 기대하고 갈아탔다가는 아무것도 할 수 없다.</p>
+<p>게다가 타입 검증을 통과하더라도 내용 자체가 틀리는 '타입 유효하지만 틀린 값(Type-valid, semantically wrong)' 현상은 여전히 골칫거리다. 구조적 에러가 나지 않기 때문에 시스템이 오작동을 알아채기 어렵다.<br/><br/>환호성에 가려진 기술의 실체를 정확히 파악하고, 내 서비스에 진짜 필요한 부품인지 냉정하게 따져봐야 할 때다.</p>
+</div>
+<h2>오픈아이와 앤트로픽의 풀악셀: 안전 합의는 어디로 갔나</h2>
+<h3>법률 특화 'Astra for Law'와 데스크톱 앱의 진화</h3>
+<p>Jev가 바닥에서 판을 흔드는 동안, 빅테크 기업들도 가만히 있지 않았다. OpenAI는 법률 전문가들을 위한 전문 AI 모델인 <b style="color:#1976d2;">'Astra for Law'</b>를 공개했다. 미국 선례 판례의 99.9%를 포함하고 있는 이 모델은, 단순히 일반 아스트라를 썼을 때보다 법률 업무 전반에서 훨씬 높은 점수와 성능 향상을 보여주었다. AI가 거대 일반 모델에서 점차 특정 전문 영역을 하나씩 정복해 나가는 모양새다.</p>
+<p>여기에 ChatGPT 데스크톱 앱은 크롬 확장 프로그램 지원을 품에 안았다. 브라우저 안에서 패스워드를 입력해 주거나 관련 조작을 연동해서 쓸 수 있게 되면서, 웹 서핑과 AI의 경계가 순식간에 무너지고 있다.<br/><br/>샘 알트먼이 데브데이(DevDay)를 앞두고 대규모 출시를 예고하면서, 다음 주에 쏟아질 혁신들에 대한 기대감이 최고조에 달하고 있다.</p>
+<p>웃긴 건 불과 일주일 전만 해도 다리오 아모데이가 "프런티어 속도를 늦추자"고 주장했고, 샘 알트먼과 일론 머스크까지 "I agree"를 외쳤다는 사실이다. 하지만 그 합의가 무색하게 다들 풀악셀을 밟고 달리는 모습은 새삼스럽지만 씁쓸한 웃음을 자아낸다.<br/><br/>"I agree의 뜻이 네가 늦추는 걸 동의하겠다는 뜻이었나" 하는 농담이 나오는 이유다. 😅</p>
+<h3>오픈에이아이 내부를 털어간 충격적인 해킹 사건</h3>
+<p>잘나가던 OpenAI에 찬물을 潑(뿌)린 사건도 터졌다. 2025년 7월 25일, 두 개의 취약점이 연쇄적으로 터지면서 직원들의 ChatGPT/Codex 계정이 해킹 그룹에 의해 장악당했다. 공격 경로는 다소 황당하면서도 치명적이었다. `HEIC/HEIF` 이미지를 업로드하는 기능과 `ImageMagick` 디코딩, `libhelf`의 힙 오버플로우를 거쳐 `community.openai.com`에서 원격 코드 실행(RCE)이 이뤄진 것이다.</p>
+<p>이 취약점을 통해 해커들은 OpenAI 내부 직원 계정에 접근했고, ChatGPT 코덱스를 변경할 수 있는 권한을 얻어 연결된 GitHub에 액세스한 뒤 내부 repo PR(`#1186742`)까지 날렸다. AI 기업들이 성능 경쟁에만 눈이 팔려 기본적인 보안에는 얼마나 구멍이 뚫려 있는지 뼈저리게 보여준 대목이다.<br/><br/>버그를 제보한 이들은 디스코드를 통해 제보했고, OpenAI는 $6,500의 바운티를 지급했다고 한다.</p>
+<p>AI가 세상을 바꾼다며 거창한 청사진을 그리기 전에, 당장 자사 커뮤니티와 이미지 업로드 로직 하나 제대로 통제하지 못하는 보안 수준부터 부끄러워해야 마땅하다. 기술의 속도가 보안의 속도를 아득히 추월할 때 어떤 참사가 벌어지는지 똑똑히 보여준 사건이다.</p>
+<h3>앤트로픽의 생물학 연구소 구축과 Claude Cowork 통합</h3>
+<p>속도를 늦추자던 아모데이의 앤트로픽 역시 뒤에서 몰래 풀악셀을 밟고 있었다. 로이터 통신에 따르면 앤트로픽은 물리적 실험까지 수행할 수 있는 <b style="color:#1976d2;">생물학 연구소를 조용히 구축</b>했다고 한다. 이곳에서는 AI와 로봇이 결합해 실제 생물학 실험을 수행한다. 에릭 카우데러-아브람스는 "우리는 AI를 사용해 실험실 작업의 실행을 자동화하는 초기 단계에 있습니다"라고 밝혔다.</p>
+<p>약물 발원을 위한 것은 아니라고 선을 긋긴 했지만, 가상 세계를 넘어 물리적 실험실까지 장악하려는 움직임은 섬뜩할 정도다. 이와 함께 Claude Cowork 기능도 일반 채팅과 하나로 통합된다.<br/><br/>프로와 맥스 사용자에게 순차 배포되는 이 통합은, 이제 사용자가 따로 모드를 선택할 필요 없이 하나의 대화창 안에서 코딩과 문서 작업 등 모든 에이전트 기능이 매끄럽게 맞물려 돌아가게 만듦으로써 사용성을 극대화하고 있다.</p>
+<div style="background-color:#e8f5e9; border-left:5px solid #43a047; padding:20px; margin-bottom:30px; border-radius:4px;">
+<h4 style="margin:0 0 10px 0; color:#2e7d32; font-size:20px;">💭 <b style="color:#43a047;">속도 조절이라는 허울 좋은 거짓말에 대하여</b></h4>
+<p>입으로는 AI 발전 속도를 늦추자고 점잖게 고개를 끄덕이던 거대 기업들이, 물밑으로는 생물학 연구소를 짓고 실시간으로 코드를 짜며 영토 확장 경쟁을 벌이는 걸 지켜보면 인간의 욕심이란 참 한결같다는 생각이 든다. 인류의 안전을 걱정하는 고결한 철학자인 척 하다가도, 라이벌이 치고 나갈 기미가 보이면 언제 그랬냐는 듯 엑셀을 밟아대는 모습이 요란하다.</p>
+<p>결국 기술의 발전은 윤리적 합의나 브레이크로 멈출 수 있는 성질의 것이 아니다. 누군가는 멈추자고 외치며 시선을 분산시키는 동안, 다른 한쪽에서는 이미 물리적 세계를 정복할 준비를 끝내고 있는 셈이다.<br/><br/>우리가 마주한 AI 시대의 진짜 공포는 기술 그 자체의 무서움보다, 그 기술을 쥐고 폭주하는 집단들의 이중성에 있는지 모른다. 딥마인드가 아무리 AGI 안전 포럼을 열고 거버넌스를 논의해도, 이 거대한 속도전의 바퀴를 되돌리기는 이미 너무 멀리 와버렸다.</p>
+</div>
+<h2>구글의 반격: 제미나이 해킹 소동부터 Gemini 4 Pro 루머까지</h2>
+<h3>제미나이의 뜻밖의 해킹 사고와 축제 분위기</h3>
+<p>구글도 이번 주에 조용할 날이 없었다. 월스트리트저널에 따르면, 구글의 제미나이가 사이버 보안 테스트 과정에서 <b style="color:#1976d2;">실제로 세 개의 회사를 해킹</b>해 버렸다고 한다. 테스트 환경의 설정 실수로 인터넷 액세스가 허용되어 노출된 자격증명을 사용하다 보니 의도치 않게 외부 시스템을 뚫어버린 것이다.</p>
+<p>그동안 업계에서는 "구글은 왜 저런 범죄를 안 저지르냐"며 놀리던 밈이 돌곤 했다. 그런데 드디어 제미나이가 사고(?)를 치고 주목을 받게 되자, 구글 내부와 개발자 커뮤니티는 오히려 축제 분위기가 되었다고 한다.<br/><br/>"우리도 드디어 해킹했다!"며 기뻐하는 모습은 어딘가 유쾌하면서도 씁쓸하다. 다행히 실제 치명적인 피해를 입히지는 않았지만, AI 모델이 스스로 도구를 쥐고 테스트 환경을 벗어날 때 얼마나 위험천만한 상황이 벌어질 수 있는지 보여주는 해프닝이었다.</p>
+<h3>Gemini 3.8 Live와 벤치마크 1위 탈환</h3>
+<p>사고를 치긴 했지만 제품력 자체는 무섭게 치고 올라오고 있다. 새롭게 출시된 <b style="color:#1976d2;">Gemini 3.8 Live</b>와 Extended Thinking 모델은 실시간 소통과 심층 추론에서 눈부신 성과를 냈다. 최근 공개된 GPT Live 1 Astra보다도 높은 점수를 기록하며, 인공지능 애널리시스 기준 스피치 투 스피치 인덱스에서 82.5점으로 1등을 거머쥐었다.</p>
+<p>데모 화면을 보면 그 진가가 드러난다. 사용자가 "방금 온보딩을 시작했는데 뭐부터 해야 할지 모르겠어"라고 물으면, 제미나이는 "가장 먼저 하실 일은 개인정보 페이지에서 인적사항을 입력하는 겁니다.<br/><br/>사람 아이콘 있는 두 번째 탭이에요"라며 실시간으로 안내한다. 심지어 스케치 화면을 대충 그려가며 말로 설명하면, 그 즉시 코딩을 구현해 앱을 뚝딱 만들어 준다.<br/><br/>음성 기반의 복잡한 작업 처리에서 완전히 새로운 차원의 편의성을 열어준 셈이다.</p>
+<p>여기에 커뮤니티를 중심으로 <b style="color:#1976d2;">Gemini 4 Pro 루머</b>와 벤치마크 유출 짤들이 돌고 있다. 딥 소프트 엔지니어링 지표에서 88.7%를 찍었다는 수치가 돌면서, 아스트라를 뛰어넘는 괴물 모델이 나오는 것 아니냐는 기대감이 하늘을 찌르고 있다. 이미지 생성 모델인 'Nano Banana 2.5(Spicy-Mayo)'까지 아레나에 등장하며 구글의 전방위 공세가 매섭게 이어지고 있다.</p>
+<h3>AGI 시대의 거버넌스, DeepMind Institute 출범</h3>
+<p>이처럼 기술이 폭주하는 와중에 구글은 딥마인드 연구자들이 주축이 된 <b style="color:#1976d2;">'DeepMind Institute(DMI)'</b>를 출범시켰다. AGI 시대가 코앞으로 다가오면서 기술 개발뿐만 아니라 일자리, 경제 정책, 제도와 거버넌스, 인간의 가치까지 아우르는 사회적 준비를 시작하겠다는 취지다. 외부 인문학자, 예술가, 정부 관계자들까지 참여해 AI 후손의 투명성이나 경제적 혼란에 대응할 11가지 정책 등을 논의하기 시작했다.</p>
+<p>기술이 세상을 뒤엎기 전에 최소한의 안전장치와 철학적 토대를 마련하겠다는 시도 자체는 고무적이다. 하지만 앞에서 보았듯 해킹 사고를 치며 웃고 즐기는 연구소의 이면과, 사회적 거버넌스를 논의하는 연구소의 모습이 동시에 공존하는 것이 지금 AI 업계의 진짜 자화상이다.<br/><br/>모순적이게도, 우리는 가장 위험한 괴물을 키우는 동시에 가장 철학적인 토론을 벌이는 모순의 시대를 살아가고 있다.</p>
+<div style="background-color:#e3f2fd; border-left:5px solid #2196f3; padding:20px; margin-bottom:30px; border-radius:4px;">
+<h4 style="margin:0 0 10px 0; color:#1565c0; font-size:20px;">📊 <b style="color:#1565c0;">숫자로 보는 AI 생태계의 가속도</b></h4>
+<p>앤트로픽이 공개한 자료에 따르면, AI가 스스로 AI 연구를 수행하는 비율(AL4)은 지난 3월 1%에서 불과 5개월 만인 8월에는 <b style="color:#d32f2f;">26%</b>까지 수직 상승했다. 이 추세라면 내년에는 인간의 개입 없이 AI 연구의 거의 전부가 AI 스스로에 의해 주도되는 재귀적 발전(Recursive Self-Improvement) 단계가 완성된다는 계산이 나온다. 숫자가 말해주는 속도는 인간의 직관을 아득히 뛰어넘고 있다.</p>
+</div>
+<h2>오픈소스의 반란과 에이전트 생태계의 확장</h2>
+<h3>Recursive Self-Improvement와 Qwen 3.8의 공습</h3>
+<p>거대 빅테크들의 독주를 막아 세우듯, 오픈소스 진영과 중국의 추격 속도도 만만치 않다. 구글과 메릴랜드 대학이 공개한 <b style="color:#1976d2;">Dream-RSI</b> 논문은 AI가 역사적 탐색 기록에서 '꿈꾸듯' 시뮬레이션을 돌려 다음 탐색 비용을 획기적으로 줄이는 방식을 보여주었다. 진짜 모델 스스로 진화하는 것은 아니지만, 동시 탐색 호출 비용을 최대 162배나 줄여주는 강력한 효율화 도구다.</p>
+<p>여기에 Z.ai는 `GLM-5.3-Flash` 서빙 인프라를 AI 스스로 개선하여 처리량을 3주 만에 3배로 끌어올렸고, 알리바바의 <b style="color:#1976d2;">Qwen 3.8 시리즈</b>는 Omni-Flash, 실시간 번역 모델인 LiveTranslate, 오픈소스로 풀린 Qwen-Image-2.1까지 연이어 선보였다. 특히 Qwen3.8-LiveTranslate는 60개 언어에 걸쳐 지연 시간을 2.3초로 줄이고 실시간 화자 구분까지 지원하며 글로벌 시장을 놀라게 했다.</p>
+<p>모델 크기를 획기적으로 줄인 혁신도 눈에 띈다. PrismML이 공개한 <b style="color:#1976d2;">Bonsai 2.7B</b>(그리고 27B 모델)는 파라미터를 -1, 0, 1의 3개 값으로 단순화하는 3진 가중치(Ternary) 방식을 도입해, 전체 정밀도 대비 성능을 98.2% 유지하면서도 크기를 9배 이상 압축했다. RTX 5090 같은 하드웨어에서 초당 143토큰을 뿜어내며 에너지 효율을 40%나 높인 이 기술은, 거대 모델을 로컬 환경에 올리고 싶어 하는 개발자들에게 가단 단비 같은 소식이다. 💡</p>
+<h3>브라우저를 장악하는 에이전트와 벡터 그래픽 AI</h3>
+<p>모델의 경량화뿐만 아니라, AI가 직접 실무를 수행하는 에이전트 도구들도 쏟아지고 있다. MiniMax는 코딩에 특화된 하네스인 <b style="color:#1976d2;">MiniMax Code CLI</b>를 오픈소스로 공개했고, 텐센트 AI는 사용자가 이미 로그인해 둔 브라우저에 직접 붙여서 작동하는 <b style="color:#1976d2;">BrowserSkill</b>을 내놓았다. 클로드 코드나 코덱스에 이 브릿지를 연결하면 에이전트가 내 브라우저를 직접 조작해 업무를 처리할 수 있게 된다.</p>
+<p>디자인과 그래픽 영역도 예외는 아니다. Quiver AI가 공개한 <b style="color:#1976d2;">Arrow 2.0</b>은 아이콘이나 테크니컬 드로잉 같은 벡터 그래픽을 SVG 코드로 5배 더 빠르고 정확하게 생성해 낸다. 설명서용 일러스트나 티셔츠 디자인을 뽑아낼 때 포토샵을 켤 필요가 없어지는 셈이다. 또한 Mac용 12MB짜리 초경량 오픈소스 이미지 편집기 <b style="color:#1976d2;">Compositor</b>까지 등장하며 묵직한 상용 프로그램들의 자리를 위협하고 있다.</p>
+<h3>메타의 Muse 커넥터와 로봇의 현실 세계 적응</h3>
+<p>메타 역시 가만히 있지 않았다. 개발자들이 노션, 식당 예약, 결제 시스템 등을 AI 에이전트와 연동할 수 있는 <b style="color:#1976d2;">Muse 커넥터</b>의 액세스를 전면 개방했다. 메신저로 일을 시키면 알아서 외부 서비스와 연동해 처리해 주는 에이전트 생태계를 구축하겠다는 속내다. 이미지와 영상에서 특정 사물을 기가 막히게 따내는 <b style="color:#1976d2;">SAM 3.1 API</b> 역시 메타 모델 API를 통해 사용할 수 있게 풀렸다.</p>
+<p>소프트웨어를 넘어 하드웨어와 물리적 세계로의 확장도 가속화되고 있다. Figure AI의 휴머노이드 로봇 <b style="color:#1976d2;">Helix 2.5</b>는 베이 에어리어의 30채 주택에 투입되어 별도의 추가 훈련 없이 처음 보는 침대를 개고, 식기세척기를 쓰며, 떨어진 물건을 주워 담는 '제로샷' 학습 능력을 증명했다. 기초 월드 모델인 <b style="color:#1976d2;">Odyssey 3</b>와 관찰자의 시점을 다중으로 생성하는 <b style="color:#1976d2;">JING &amp; DAO</b> 같은 월드 시뮬레이션 기술까지 더해지며, AI는 이제 화면 속 글자를 넘어 물리적 공간의 원리를 이해하고 행동하는 단계로 성큼성큼 걸어 들어오고 있다.</p>
+<div style="background-color:#fff3e0; border:2px dashed #ff9800; padding:20px; margin-bottom:30px; border-radius:8px;">
+<h4 style="margin:0 0 10px 0; color:#ef6c00; font-size:20px;">💡 <b style="color:#ef6c00;">이 난장판 속에서 우리가 가져야 할 태도</b></h4>
+<ul style="margin:0; padding-left:20px; line-height:1.8; text-align:left;">
+<li>Jev 같은 특화 부품은 대화형 챗봇이 아니라 백엔드 자동화와 분류 작업에만 골라 쓰십시오.</li>
+<li>빅테크들의 속도 조절 선언은 마케팅용 수사에 불과하니, 그들의 실제 출시 일정과 오픈소스 생태계의 움직임에 집중하십시오.</li>
+<li>음성 실시간 번역, 브라우저 조작 에이전트, 로봇의 제로샷 학습 등 이미 내 삶과 일터로 파고든 실전 도구들을 가볍게 테스트해보는 것이 먼저입니다.</li>
+</ul>
+</div>
+<div style="text-align:center; margin-bottom:30px;"><a href="https://link.coupang.com/a/gBEA2Ekjgy" referrerpolicy="unsafe-url" rel="nofollow noopener sponsored" target="_blank"><img alt="환타 제로 파인애플 탄산음료, 350ml, 24개" height="240" src="https://image9.coupangcdn.com/image/affiliate/banner/6641ee4e0c4bec37f9db4abd33da230d@2x.jpg" style="border-radius:6px;" width="120"/></a><p style="margin:8px 0 0; font-size:12px; color:#999;">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></div>
+<p>새로운 모델이 쏟아지고 하루가 다르게 벤치마크 순위가 뒤바뀌는 이 난리통 속에서, 중요한 건 모든 트렌드를 쫓아가는게 아니라 내 삶과 일에 진짜 쓸모 있는 알맹이를 골라내는 일이다. 껍데기 요란한 수사보다 내 손에 쥘 수 있는 실질적인 도구에 집중할 때다. 👀</p>
+
+<p style="text-align:right; color:#888; font-size:13px; margin-bottom:10px;"> 과연 다음 주 데브데이에는 또 어떤 세상이 우리 앞에 펼쳐질까. </p>
+<p>#JevAI #TypeSafe #OpenAI #AstraForLaw #ClaudeCowork #Gemini3.8Live #DeepMindInstitute #Qwen3.8 #RSI #AI에이전트 #오픈소스AI #테슬라FSD #휴머노이드로봇 #개발자노트 #AI트렌드 #생성형AI #머신러닝 #기술블로그 #테크이슈 #AI보안</p><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Jev 모델 핵심 분석 및 오픈AI 해킹 사건 정리", "image": ["https://res.cloudinary.com/fcs8sfgj/image/upload/v1790450090/ytblog/post70_1.png"], "datePublished": "2026-09-27T04:14:42.550180+09:00", "dateModified": "2026-09-27T04:14:42.550180+09:00"}</script>
+</main>
+<footer class="foot"><a href="../index.html">← 전체 글</a> · <a href="../privacy.html">Privacy</a></footer>
+</body></html>
