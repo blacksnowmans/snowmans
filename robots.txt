@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://snowmans.sunphs2002.workers.dev/sitemap.xml
