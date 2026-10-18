@@ -8,7 +8,7 @@
 <meta property="og:title" content="REA 오픈소스 분석, 포토샵까지 복제하는 AI 툴의 정체">
 <meta property="og:description" content="요즘 개발자 커뮤니티나 테크 판에서 가장 뜨겁게 달궈진 주제를 꼽으라면 단연 REA(Reverse Engineer Anything) 이야기다. 깃허브에 등장하자마자 일주일 만에 무려 19만 개의 추천 별 을 받으며 전 세계 테크 마니아들을 경악게 만든 오픈소스 도구다. 📉 해외 커뮤니티">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://res.cloudinary.com/fcs8sfgj/image/upload/v1791946818/ytblog/post1131_1.png">
+<meta property="og:image" content="https://blacksnowmans.github.io/blacksnowman/img/post1131_1.jpg">
 <link rel="stylesheet" href="../../style.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VH6TFNDE1"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6VH6TFNDE1');</script>
@@ -18,11 +18,11 @@
 <main class="post">
   <h1>REA 오픈소스 분석, 포토샵까지 복제하는 AI 툴의 정체</h1>
   <p class="meta"><time datetime="2026-10-14">2026년 10월 14일</time></p>
-  <p><img src="https://res.cloudinary.com/fcs8sfgj/image/upload/v1791946818/ytblog/post1131_1.png" alt="REA 오픈소스 분석, 포토샵까지 복제하는 AI 툴의 정체"></p>
+  <p><img src="https://blacksnowmans.github.io/blacksnowman/img/post1131_1.jpg" alt="REA 오픈소스 분석, 포토샵까지 복제하는 AI 툴의 정체"></p>
   
 <p>요즘 개발자 커뮤니티나 테크 판에서 가장 뜨겁게 달궈진 주제를 꼽으라면 단연 <b style="color:#d32f2f;">REA(Reverse Engineer Anything)</b> 이야기다. 깃허브에 등장하자마자 일주일 만에 <b style="color:#1976d2;">무려 19만 개의 추천 별</b>을 받으며 전 세계 테크 마니아들을 경악게 만든 오픈소스 도구다. 📉 </p><p>해외 커뮤니티에서는 <span style="background-color:#fff9c4;">"이제 소프트웨어는 끝났다"</span>는 극단적인 평가까지 나올 정도로 파장이 엄청나다. 대체 이 도구가 뭐길래 이렇게 야단일까. </p><p>복잡한 프로그램의 속살을 낱낱이 파헤쳐 뼈대만 남긴다는 이 기술의 정체와, 그 뒤에 숨겨진 서늘한 현실을 직접 들여다보기로 했다.</p>
 
-<p style="text-align:center; margin:30px 0;"><img alt="본문 이미지 1" src="https://res.cloudinary.com/fcs8sfgj/image/upload/v1791946818/ytblog/post1131_1.png" style="max-width:100%; height:auto; border-radius:8px;"/></p>
+<p style="text-align:center; margin:30px 0;"><img alt="본문 이미지 1" src="https://blacksnowmans.github.io/blacksnowman/img/post1131_1.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></p>
 <h2>REA의 정의와 리버스 엔지니어링의 본질</h2>
 <h3>리버스 엔지니어링이 전문가만의 영역에서 내려온 이유</h3>
 <p>완성된 제품을 분해해서 어떻게 만들어졌는지 알아내는 과정을 <b style="color:#1976d2;">리버스 엔지니어링(역공학)</b>이라고 부른다. 소프트웨어 분야에서는 우리가 일상적으로 다운받아 쓰는 앱의 바이너리 코드를 거꾸로 추적해 개발자가 작성한 원리를 알아내는 작업을 뜻한다. </p><p>하지만 지금까지는 이 과정이 너무나 고통스러웠다. 우리가 내려받는 앱은 사람이 읽을 수 있는 코드가 아니라 컴퓨터만 이해할 수 있는 기계어의 바다이기 때문이다. </p><p>전문 분석 프로그램의 도움 없이는 접근조차 불가능했고, 오랜 경험을 가진 보안 전문가들만이 다룰 수 있는 성역 같은 영역이었다. 💡</p>
@@ -82,7 +82,7 @@
 <div style="text-align:center; margin-bottom:30px;"><a href="https://link.coupang.com/a/gBEzFJk4dM" referrerpolicy="unsafe-url" rel="nofollow noopener sponsored" target="_blank"><img alt="원더푸드 짜먹는 고양이 간식 60p, 혼합맛(연어/참치), 720g, 1세트" height="240" src="https://img5c.coupangcdn.com/image/affiliate/banner/d14d0149a10dedf700e7c63758aa9f6b@2x.jpg" style="border-radius:6px;" width="120"/></a><p style="margin:8px 0 0; font-size:12px; color:#999;">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></div>
 <p>소스코드가 감추어졌던 시대의 막이 내리고, 모든 프로그램의 속살이 AI 앞에 낱낱이 드러나는 전환점에 우리는 서 있다. 이 거대한 흐름 속에서 기회와 위험을 가르는 기준은 결국 기술을 다루는 우리의 손끝에 달려 있다.</p>
 
-<p>#REA #리버스엔지니어링 #인공지능 #클로드코드 #오픈소스 #소프트웨어저작권 #개발자커뮤니티 #테크이슈 #MCP #AI자동화</p><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "REA 오픈소스 분석, 포토샵까지 복제하는 AI 툴의 정체", "image": ["https://res.cloudinary.com/fcs8sfgj/image/upload/v1791946818/ytblog/post1131_1.png"], "datePublished": "2026-10-14T12:00:13.375045+09:00", "dateModified": "2026-10-14T12:00:13.375045+09:00"}</script>
+<p>#REA #리버스엔지니어링 #인공지능 #클로드코드 #오픈소스 #소프트웨어저작권 #개발자커뮤니티 #테크이슈 #MCP #AI자동화</p><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "REA 오픈소스 분석, 포토샵까지 복제하는 AI 툴의 정체", "image": ["https://blacksnowmans.github.io/blacksnowman/img/post1131_1.jpg"], "datePublished": "2026-10-14T12:00:13.375045+09:00", "dateModified": "2026-10-14T12:00:13.375045+09:00"}</script>
 </main>
 <footer class="foot"><a href="../index.html">← 전체 글</a> · <a href="../privacy.html">Privacy</a></footer>
 </body></html>

@@ -8,7 +8,7 @@
 <meta property="og:title" content="Qwen 3.8 27B 출시! 로컬 AI 코딩 성능 벤치마크 총정리">
 <meta property="og:description" content="로컬 AI 환경에서 27B 규모의 모델로 이 정도 퍼포먼스를 뽑아낼 수 있다는 것은, 그동안 프론티어 모델의 API 비용에 짓눌려 있던 개발자들에게는 그야말로 단비 같은 소식 입니다. 최근 공개된 Qwen 3.8 27B 모델은 단순한 업데이트를 넘어, 로컬 LLM의 생태계를 뒤흔들 만한">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://res.cloudinary.com/fcs8sfgj/image/upload/v1789682514/ytblog/post804_1.png">
+<meta property="og:image" content="https://blacksnowmans.github.io/blacksnowman/img/post804_1.jpg">
 <link rel="stylesheet" href="../../style.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VH6TFNDE1"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6VH6TFNDE1');</script>
@@ -18,9 +18,9 @@
 <main class="post">
   <h1>Qwen 3.8 27B 출시! 로컬 AI 코딩 성능 벤치마크 총정리</h1>
   <p class="meta"><time datetime="2026-09-18">2026년 09월 18일</time></p>
-  <p><img src="https://res.cloudinary.com/fcs8sfgj/image/upload/v1789682514/ytblog/post804_1.png" alt="Qwen 3.8 27B 출시! 로컬 AI 코딩 성능 벤치마크 총정리"></p>
+  <p><img src="https://blacksnowmans.github.io/blacksnowman/img/post804_1.jpg" alt="Qwen 3.8 27B 출시! 로컬 AI 코딩 성능 벤치마크 총정리"></p>
   
-로컬 AI 환경에서 27B 규모의 모델로 이 정도 퍼포먼스를 뽑아낼 수 있다는 것은, 그동안 프론티어 모델의 API 비용에 짓눌려 있던 개발자들에게는 그야말로 <b style="color:#1976d2;">단비 같은 소식</b>입니다. 최근 공개된 Qwen 3.8 27B 모델은 단순한 업데이트를 넘어, 로컬 LLM의 생태계를 뒤흔들 만한 폭발적인 성능 향상을 보여주고 있습니다. 특히 32GB VRAM이라는 비교적 현실적인 하드웨어 제약 안에서, 거대 모델인 Opus 4.6 MAX와 비교 대상이 된다는 사실 하나만으로도 우리는 <span style="background-color:#fff9c4;">로컬 모델의 새로운 지평</span>을 마주하고 있다고 해도 과언이 아닙니다. 이 글에서는 이번 Qwen 3.8 27B 모델의 압도적인 벤치마크 결과와 함께, 실제 로컬 환경에서 구동하며 겪었던 시행착오, 그리고 개발 효율성을 극대화하기 위한 에이전트 운용 팁을 낱낱이 파헤쳐 보겠습니다. <p style="text-align:center; margin:30px 0;"><img alt="본문 이미지 1" src="https://res.cloudinary.com/fcs8sfgj/image/upload/v1789682514/ytblog/post804_1.png" style="max-width:100%; height:auto; border-radius:8px;"/></p>
+로컬 AI 환경에서 27B 규모의 모델로 이 정도 퍼포먼스를 뽑아낼 수 있다는 것은, 그동안 프론티어 모델의 API 비용에 짓눌려 있던 개발자들에게는 그야말로 <b style="color:#1976d2;">단비 같은 소식</b>입니다. 최근 공개된 Qwen 3.8 27B 모델은 단순한 업데이트를 넘어, 로컬 LLM의 생태계를 뒤흔들 만한 폭발적인 성능 향상을 보여주고 있습니다. 특히 32GB VRAM이라는 비교적 현실적인 하드웨어 제약 안에서, 거대 모델인 Opus 4.6 MAX와 비교 대상이 된다는 사실 하나만으로도 우리는 <span style="background-color:#fff9c4;">로컬 모델의 새로운 지평</span>을 마주하고 있다고 해도 과언이 아닙니다. 이 글에서는 이번 Qwen 3.8 27B 모델의 압도적인 벤치마크 결과와 함께, 실제 로컬 환경에서 구동하며 겪었던 시행착오, 그리고 개발 효율성을 극대화하기 위한 에이전트 운용 팁을 낱낱이 파헤쳐 보겠습니다. <p style="text-align:center; margin:30px 0;"><img alt="본문 이미지 1" src="https://blacksnowmans.github.io/blacksnowman/img/post804_1.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></p>
 
 <h2>Qwen 3.8 27B, 로컬 AI의 한계를 다시 쓰다</h2>
 <h3>압도적인 성능 향상의 비결</h3>
@@ -85,7 +85,7 @@ AI에게 작업을 맡길 때 가장 흔히 저지르는 실수는 막연한 지
 <div style="text-align:center; margin-bottom:30px;"><a href="https://link.coupang.com/a/gBEDLnv0wu" referrerpolicy="unsafe-url" rel="nofollow noopener sponsored" target="_blank"><img alt="제주삼다수 그린 무라벨, 2L, 12개" height="240" src="https://img5a.coupangcdn.com/image/affiliate/banner/acf53b973c13754075a70e7ff31c1162@2x.jpg" style="border-radius:6px;" width="120"/></a><p style="margin:8px 0 0; font-size:12px; color:#999;">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></div>
 Qwen 3.8 27B 모델은 우리에게 로컬 AI가 가진 가능성이 결코 제한적이지 않음을 입증했습니다. 성능과 경제성, 그리고 그 안에서 우리가 직접 통제하는 에이전트 환경까지, 로컬 AI의 세계는 매일같이 뜨겁게 팽창하고 있습니다. 여러분도 이번 기회에 자신만의 로컬 환경을 정교하게 다듬어, 더 나은 코딩 환경을 경험해 보길 바랍니다.
 
-<p>#Qwen3 #Qwen38 #로컬AI #27B #언슬로스 #LLM #코딩AI #로컬LLM #RTX5090 #AI개발 #자동화 #오픈소스AI #인공지능 #개발자도구 #생성형AI #AI성능 #VRAM최적화 #AI모델리뷰 #LLM가이드 #코딩에이전트 #AI수익모델 #테크트렌드 #AI라이선스 #Qwen최신모델 #로컬추론 #메모리최적화 #파워쉘자동화 #AI엔지니어링 #AI프로세스 #개인용AI</p><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Qwen 3.8 27B 출시! 로컬 AI 코딩 성능 벤치마크 총정리", "image": ["https://res.cloudinary.com/fcs8sfgj/image/upload/v1789682514/ytblog/post804_1.png"], "datePublished": "2026-09-18T07:01:48.952538+09:00", "dateModified": "2026-09-18T07:01:48.952538+09:00"}</script>
+<p>#Qwen3 #Qwen38 #로컬AI #27B #언슬로스 #LLM #코딩AI #로컬LLM #RTX5090 #AI개발 #자동화 #오픈소스AI #인공지능 #개발자도구 #생성형AI #AI성능 #VRAM최적화 #AI모델리뷰 #LLM가이드 #코딩에이전트 #AI수익모델 #테크트렌드 #AI라이선스 #Qwen최신모델 #로컬추론 #메모리최적화 #파워쉘자동화 #AI엔지니어링 #AI프로세스 #개인용AI</p><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Qwen 3.8 27B 출시! 로컬 AI 코딩 성능 벤치마크 총정리", "image": ["https://blacksnowmans.github.io/blacksnowman/img/post804_1.jpg"], "datePublished": "2026-09-18T07:01:48.952538+09:00", "dateModified": "2026-09-18T07:01:48.952538+09:00"}</script>
 </main>
 <footer class="foot"><a href="../index.html">← 전체 글</a> · <a href="../privacy.html">Privacy</a></footer>
 </body></html>

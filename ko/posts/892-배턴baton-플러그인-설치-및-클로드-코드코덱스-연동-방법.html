@@ -8,7 +8,7 @@
 <meta property="og:title" content="배턴(Baton) 플러그인 설치 및 클로드 코드·코덱스 연동 방법">
 <meta property="og:description" content="AI 기술의 발전 속도가 말 그대로 &#x27;광속&#x27;이라는 말이 실감 나는 요즘입니다. 예전에는 AI 한 번 써보겠다고 이것저것 설치하고 설정하는 게 일이었는데, 이제는 여러 에이전트가 알아서 대화하며 협업하는 멀티 에이전트 환경이 실무의 표준으로 자리 잡고 있죠. 그런데 여기서 킹받는 지점이 ">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://res.cloudinary.com/fcs8sfgj/image/upload/v1791576992/ytblog/post892_1.png">
+<meta property="og:image" content="https://blacksnowmans.github.io/blacksnowman/img/post892_1.jpg">
 <link rel="stylesheet" href="../../style.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VH6TFNDE1"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6VH6TFNDE1');</script>
@@ -18,11 +18,11 @@
 <main class="post">
   <h1>배턴(Baton) 플러그인 설치 및 클로드 코드·코덱스 연동 방법</h1>
   <p class="meta"><time datetime="2026-10-10">2026년 10월 10일</time></p>
-  <p><img src="https://res.cloudinary.com/fcs8sfgj/image/upload/v1791576992/ytblog/post892_1.png" alt="배턴(Baton) 플러그인 설치 및 클로드 코드·코덱스 연동 방법"></p>
+  <p><img src="https://blacksnowmans.github.io/blacksnowman/img/post892_1.jpg" alt="배턴(Baton) 플러그인 설치 및 클로드 코드·코덱스 연동 방법"></p>
   
 AI 기술의 발전 속도가 말 그대로 '광속'이라는 말이 실감 나는 요즘입니다. 예전에는 AI 한 번 써보겠다고 이것저것 설치하고 설정하는 게 일이었는데, 이제는 여러 에이전트가 알아서 대화하며 협업하는 멀티 에이전트 환경이 실무의 표준으로 자리 잡고 있죠. 그런데 여기서 킹받는 지점이 하나 발생합니다. AI를 여러 개 쓰다 보면 결국 사람이 '중간 관리자'가 되어 이쪽 창에서 복사하고, 저쪽 창에 붙여넣는 심부름을 하고 있다는 겁니다. "이게 과연 효율적인가?"라는 의문이 들 때쯤, <b style="color:#1976d2;">클로드 코드와 코덱스, 헤르메스를 하나의 플러그인으로 연결하는 '배턴(Baton)'</b>이 등장했습니다. 오늘은 이 기술이 왜 에이전트 생태계의 판도를 바꾸고 있는지, 직접 써본 경험을 녹여 정리해 보려 합니다.
 
-<p style="text-align:center; margin:30px 0;"><img alt="본문 이미지 1" src="https://res.cloudinary.com/fcs8sfgj/image/upload/v1791576992/ytblog/post892_1.png" style="max-width:100%; height:auto; border-radius:8px;"/></p>
+<p style="text-align:center; margin:30px 0;"><img alt="본문 이미지 1" src="https://blacksnowmans.github.io/blacksnowman/img/post892_1.jpg" style="max-width:100%; height:auto; border-radius:8px;"/></p>
 <h2>AI 에이전트 간의 끊어진 연결고리, 배턴으로 잇다</h2>
 <h3>수동 복사·붙여넣기는 이제 퇴물입니다</h3>
 <p>우리가 AI를 쓰면서 가장 많이 하는 동작은 아마 'Ctrl+C, Ctrl+V'일 겁니다. 클로드에게 시킨 결과물을 복사해서 코덱스에 던지고, 다시 코덱스가 내놓은 답을 클로드에 옮기는 과정이죠. </p><p>생각해보면 참 허무합니다. 뛰어난 성능의 AI들을 수십 개씩 돌리면서, 정작 그 사이를 잇는 '연결'은 인간의 근육 노동에 의존하고 있으니까요. <b style="color:#d32f2f;">"사람이 가운데에서 심부름을 하는 겁니다."</b>라는 지적처럼, 이 구조는 진정한 자동화와는 거리가 멉니다.</p>
@@ -73,7 +73,7 @@ AI 기술의 발전 속도가 말 그대로 '광속'이라는 말이 실감 나�
 <div style="text-align:center; margin-bottom:30px;"><a href="https://link.coupang.com/a/gBEA2Ekjgy" referrerpolicy="unsafe-url" rel="nofollow noopener sponsored" target="_blank"><img alt="환타 제로 파인애플 탄산음료, 350ml, 24개" height="240" src="https://image9.coupangcdn.com/image/affiliate/banner/6641ee4e0c4bec37f9db4abd33da230d@2x.jpg" style="border-radius:6px;" width="120"/></a><p style="margin:8px 0 0; font-size:12px; color:#999;">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></div>
 배턴 플러그인과 매뉴얼이 필요한 분들은 전문가의 안내에 따라 꼼꼼히 세팅하시길 바랍니다. 도구는 기술을 앞당기지만, 그 도구를 쥐고 있는 사람의 통찰력이 기술의 가치를 결정합니다. 오늘 정리해 드린 내용이 여러분의 작업 환경을 한 단계 더 스마트하게 만드는 계기가 되었기를 바랍니다.
 
-<p>#배턴 #Baton #클로드코드 #코덱스 #헤르메스 #멀티에이전트 #에이전틱AI #AI자동화 #디스코드봇 #표준화 #A2A프로토콜 #데이터보안 #AIBOM #기술블로그 #AI협업 #에이전트인터넷 #IoA #워크플로우 #자동화도구 #IT인사이트 #디지털전환 #LLM기술 #오픈소스AI #기술생태계 #개발자도구 #생산성도구 #소프트웨어공학 #AI보안 #자동화셋팅 #멀티에이전트시스템</p><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "배턴(Baton) 플러그인 설치 및 클로드 코드·코덱스 연동 방법", "image": ["https://res.cloudinary.com/fcs8sfgj/image/upload/v1791576992/ytblog/post892_1.png"], "datePublished": "2026-10-10T05:16:26.846018+09:00", "dateModified": "2026-10-10T05:16:26.846018+09:00"}</script>
+<p>#배턴 #Baton #클로드코드 #코덱스 #헤르메스 #멀티에이전트 #에이전틱AI #AI자동화 #디스코드봇 #표준화 #A2A프로토콜 #데이터보안 #AIBOM #기술블로그 #AI협업 #에이전트인터넷 #IoA #워크플로우 #자동화도구 #IT인사이트 #디지털전환 #LLM기술 #오픈소스AI #기술생태계 #개발자도구 #생산성도구 #소프트웨어공학 #AI보안 #자동화셋팅 #멀티에이전트시스템</p><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "배턴(Baton) 플러그인 설치 및 클로드 코드·코덱스 연동 방법", "image": ["https://blacksnowmans.github.io/blacksnowman/img/post892_1.jpg"], "datePublished": "2026-10-10T05:16:26.846018+09:00", "dateModified": "2026-10-10T05:16:26.846018+09:00"}</script>
 </main>
 <footer class="foot"><a href="../index.html">← 전체 글</a> · <a href="../privacy.html">Privacy</a></footer>
 </body></html>
