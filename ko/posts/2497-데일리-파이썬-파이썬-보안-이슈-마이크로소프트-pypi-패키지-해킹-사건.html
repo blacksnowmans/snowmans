@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[데일리 파이썬] 파이썬 보안 이슈: 마이크로소프트 PyPI 패키지 해킹 사건 — 블랙 스노우맨 브리프</title>
+<meta name="description" content="11월 18일 발생한 가장 큰 파이썬 보안 이슈는 마이크로소프트의 공식 에이전트 프레임워크 패키지가 PyPI에서 탈취당해 클라우드 자격 증명이 유출된 사건이다. 개발자가 오픈소스 생태계를 신뢰하고 가져다 쓰는 과정에서 인프라 핵심 권한이 통째로 털릴 수 있다는 경고등이 켜졌다. 오픈소스">
+<link rel="canonical" href="https://sunphs2002.tistory.com/2822">
+<meta property="og:title" content="[데일리 파이썬] 파이썬 보안 이슈: 마이크로소프트 PyPI 패키지 해킹 사건">
+<meta property="og:description" content="11월 18일 발생한 가장 큰 파이썬 보안 이슈는 마이크로소프트의 공식 에이전트 프레임워크 패키지가 PyPI에서 탈취당해 클라우드 자격 증명이 유출된 사건이다. 개발자가 오픈소스 생태계를 신뢰하고 가져다 쓰는 과정에서 인프라 핵심 권한이 통째로 털릴 수 있다는 경고등이 켜졌다. 오픈소스">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://blacksnowmans.github.io/blacksnowman/img/post2497_1.jpg">
+<link rel="stylesheet" href="../../style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6VH6TFNDE1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6VH6TFNDE1');</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d540751729ea4b4a813e081466d5b8f3"}'></script>
+</head><body>
+<header class="top"><a class="home" href="../index.html">블랙 스노우맨 브리프</a><a class="lang-switch" href="../../posts/2497-데일리-파이썬-파이썬-보안-이슈-마이크로소프트-pypi-패키지-해킹-사건.html">English</a></header>
+<main class="post">
+  <h1>[데일리 파이썬] 파이썬 보안 이슈: 마이크로소프트 PyPI 패키지 해킹 사건</h1>
+  <p class="meta"><time datetime="2026-11-19">2026년 11월 19일</time></p>
+  <p><img src="https://blacksnowmans.github.io/blacksnowman/img/post2497_1.jpg" alt="[데일리 파이썬] 파이썬 보안 이슈: 마이크로소프트 PyPI 패키지 해킹 사건 | 검은색눈사람"></p>
+  
+11월 18일 발생한 가장 큰 파이썬 보안 이슈는 마이크로소프트의 공식 에이전트 프레임워크 패키지가 PyPI에서 탈취당해 클라우드 자격 증명이 유출된 사건이다. 개발자가 오픈소스 생태계를 신뢰하고 가져다 쓰는 과정에서 인프라 핵심 권한이 통째로 털릴 수 있다는 경고등이 켜졌다.<br/>
+
+오픈소스 중앙 저장소인 PyPI 악성코드 유입 사고는 개인 개발자의 실수를 넘어 거대 빅테크 기업의 공식 라이브러리까지 집요하게 노리는 양상으로 발전했다. 어제 하루 동안 국내외 개발자 커뮤니티와 보안 업계를 달군 11월 18일 주요 파이썬 소식과 관련 생태계 동향을 체계적으로 살펴본다.
+<p style="text-align:center; color:#ffffff; background-color:#1b1e33; font-weight:bold;">📅 검은색눈사람 데일리 브리핑 · 파이썬 · 26회</p>
+<p style="text-align:center; margin:30px 0;"><img alt="본문 이미지 1 | 검은색눈사람" decoding="async" height="630" src="https://blacksnowmans.github.io/blacksnowman/img/post2497_1.jpg" style="max-width:100%; height:auto; border-radius:8px;" width="1200"/></p>
+<div style="background-color:#fafafa; border:1px solid #e5e5e5; border-radius:6px; padding:16px 20px; margin:24px 0;"><p style="margin:0 0 8px 0;"><b>📑 목차</b></p><ol style="margin:0; padding-left:20px; line-height:1.8;"><li style="margin-bottom:4px;"><a href="#sec1" style="color:#37474f; text-decoration:none;">마이크로소프트 PyPI 패키지 탈취 사건과 파이썬 보안 이슈</a></li><li style="margin-bottom:4px;"><a href="#sec2" style="color:#37474f; text-decoration:none;">AI 에이전트와 전용 도구 생태계의 신규 라이브러리</a></li><li style="margin-bottom:4px;"><a href="#sec3" style="color:#37474f; text-decoration:none;">데이터 분석 및 과학 연구용 파이썬 전문 패키지 현황</a></li><li style="margin-bottom:4px;"><a href="#sec4" style="color:#37474f; text-decoration:none;">하드웨어 결합 제어 도구와 프로그래밍 언어 생태계 변화</a></li><li style="margin-bottom:4px;"><a href="#sec5" style="color:#37474f; text-decoration:none;">개발자 교육 현장과 산업계 AI 파이썬 기술 도입</a></li></ol></div><h2 id="sec1">마이크로소프트 PyPI 패키지 탈취 사건과 파이썬 보안 이슈</h2>
+<h3>마이크로소프트 에이전트 프레임워크 오염 사태</h3>
+오픈소스 파이썬 패키지 색인인 PyPI에 올려진 마이크로소프트의 공식 `agent-framework` 패키지가 11월 18일 악성코드에 오염된 채 배포되어 보안 업계에 비상이 걸렸다. CyberSecurityNews, The Hacker News, SecurityWeek 등 주요 해외 보안 매체들의 보도에 따르면, 공격자들은 마이크로소프트 에이전트 프레임워크의 특정 릴리스를 탈취하여 계정 자격 증명을 훔치는 악성 코드를 주입했다.<br/>
+
+해당 사건이 확인된 즉시 PyPI 측은 문제의 마이크로소프트 AI 프레임워크 릴리스 2건을 격리 조치했다. 공식 비즈니스 파트너나 거대 기업이 관리하는 라이브러리조차 공급망 공격의 안전지대가 아님이 입증된 셈이다. 파이썬 개발자 보안 체계에 구멍이 뚫렸다는 지적을 피하기 어렵게 됐다.<br/>
+
+개발 현장에서 널리 쓰이는 공식 프레임워크 이름값만 믿고 `pip install` 명령어를 입력했던 이들에게는 그야말로 등골이 서늘해지는 사고였다. 오픈소스에 대한 무조건적인 신뢰가 얼마나 위험한지 다시금 일깨워준 사례다.<br/>
+<h3>클라우드 자격 증명 탈취 공격 메커니즘과 파이썬 개발자 보안</h3>
+이번 PyPI 패키지 해킹 사건의 핵심 공격 메커니즘은 파이썬 실행 환경의 `.pth` 훅(hook)을 악용한 것으로 나타났다. Security Boulevard 및 MLQ.ai의 분석에 의하면 공격자는 파이썬 환경이 로드될 때 자동으로 실행되는 `.pth` 파일 특성을 이용해 사용자의 Azure 자격 증명과 CI/CD 파이프라인 인증 정보를 은밀히 훔쳐냈다.<br/>
+
+개발자의 로컬 컴퓨터나 빌드 서버에서 해당 악성 PyPI 악성코드가 포함된 패키지가 설치되는 순간, 클라우드 자격 증명 탈취가 즉시 이루어졌다. 이는 특정 프로그램의 동작을 방해하는 수준을 넘어 기업의 클라우드 인프라 전체를 공격자에게 그대로 넘겨줄 수 있는 치명적인 위협이다.<br/>
+
+클라우드 기반 AI 에이전트를 개발하는 파이썬 개발자라면 이제 라이브러리 의존성 관리에 완전히 다른 접근법을 취해야 한다. 설치 전 패키지 무결성 검증은 물론, CI/CD 환경 내 최소 권한 원칙 적용이 선택이 아닌 필수 과제로 떠올랐다.<br/>
+<div style="background-color:#ffebee; border-left:5px solid #ef5350; padding:20px; margin-bottom:30px; border-radius:4px;">
+<h4 style="margin:0 0 10px 0; color:#c62828; font-size:20px;"><b style="color:#c62828;">🔥 파이썬 공급망 공격이 던진 경고장</b></h4>
+<p>빅테크 기업의 이름을 내건 공식 패키지마저 탈취당하는 시대다. `.pth` 훅을 악용한 클라우드 자격 증명 탈취는 개발자의 개별 주의 수준을 넘어서는 심각한 위협이다.</p>
+<p><b style="color:#d32f2f;"><span style="background-color:#fff9c4;">오픈소스 패키지 의존성 검증과 CI/CD 파이프라인의 보안 통제를 즉시 강화해야 한다.</span></b></p>
+</div>
+<h2 id="sec2">AI 에이전트와 전용 도구 생태계의 신규 라이브러리</h2>
+<h3>AG-UI 프로토콜과 런타임 없는 9.3MB 에이전트 등장</h3>
+AI 에이전트 인터페이스 분야에서는 11월 18일 새로운 표준과 가벼운 도구들이 연이어 공개되어 주목받았다. BigGo Finance 발표에 따르면, 에이전트와 프론트엔드를 연결하는 프레임워크 표준을 지향하는 'AG-UI Protocol'이 공개 단 하루 만에 깃허브(GitHub) 스타 1,444개를 기록하며 폭발적인 관심을 끌었다.<br/>
+
+이와 함께 런타임 환경 없이도 작동하는 9.3MB 단일 파일 코딩 에이전트(Single-File Coding Agent)가 새롭게 데뷔했다. 별도의 복잡한 파이썬 환경 구축이나 대용량 의존성 패키지 설치 없이도 즉시 코딩 에이전트 기능을 실행할 수 있도록 경량화된 솔루션이다.<br/>
+
+AI 개발 생태계가 대형 모델 연동을 넘어 프론트엔드 연동 표준화와 경량 독립 실행형 도구로 빠르게 다변화되고 있음을 보여준다. 거대한 프레임워크 일색이던 시장에 가볍고 직관적인 도구들이 속속 등장하는 추세다.<br/>
+<h3>OrcaRouter의 PSF 스폰서십과 파이썬 에코시스템 지원</h3>
+파이썬 소프트웨어 재단(PSF)을 향한 기업들의 생태계 지원 소식도 전해졌다. 투데이안 보도에 의하면 OrcaRouter가 '파이썬이 AI의 심장'이라는 슬로건을 내걸고 PSF의 파트너 스폰서로 공식 참여했다.<br/>
+
+OrcaRouter의 스폰서십 참여는 파이썬이 데이터 분석과 AI 개발의 핵심 언어로 자리 잡은 상황에서 재단의 오픈소스 활동과 개발 환경 개선을 지속해서 지원하기 위한 목적이다. 커뮤니티의 안정적 운영이 곧 기술 기업의 경쟁력으로 직결된다는 판단이 작용했다.<br/>
+
+기업의 재정적 지원은 파이썬 코어 개발과 언어 자체의 보안 및 성능 개선에 직접적인 동력이 된다. 오픈소스 기반 AI 기술이 급속도로 발전함에 따라 재단을 향한 기술 기업들의 투자는 더욱 늘어날 것으로 보인다.<br/>
+<h2 id="sec3">데이터 분석 및 과학 연구용 파이썬 전문 패키지 현황</h2>
+<h3>CatHub와 CarbonTracker 등 연구용 패키지 업데이트</h3>
+11월 18일 연구 및 과학 계산 분야에서도 파이썬 기반 전문 라이브러리들의 소식이 이어졌다. CASRAI 보도에 따르면 촉매 반응 데이터베이스 Catalysis-Hub.org를 전용으로 다루는 파이썬 패키지 및 CLI 도구인 `CatHub`가 공개되어 촉매 연구자들의 데이터 접근성을 대폭 높였다.<br/>
+
+기후 변화 및 이산화탄소 분석 분야에서는 NOAA의 CO2 데이터와 파이썬 머신러닝 도구를 결합한 `CarbonTracker` 관련 활용 사례가 공유되었다. 학술 연구진이 복잡한 환경 데이터를 파이썬 파이프라인으로 쉽게 처리할 수 있도록 돕는 도구다.<br/>
+
+전통 과학 분야의 데이터를 파이썬 머신러닝 생태계로 직접 연결하려는 시도가 꾸준히 이어지고 있다. 기초 과학과 데이터 분석 언어로서 파이썬의 독점적 지위는 더욱 공고해지는 모습이다.<br/>
+<div style="background-color:#fff3e0; border:2px dashed #ff9800; padding:20px; margin-bottom:30px; border-radius:8px;">
+<h4 style="margin:0 0 10px 0; color:#ef6c00; font-size:20px;"><b style="color:#ef6c00;">💡 11월 18일 신규 파이썬 연구·도구 패키지 요약</b></h4>
+<ul style="margin:0; padding-left:20px; line-height:1.8; text-align:left;">
+<li>CatHub: Catalysis-Hub.org 데이터 접근성을 극대화한 촉매 연구용 파이썬 패키지 및 CLI</li>
+<li>CarbonTracker: NOAA 이산화탄소 데이터 분석과 머신러닝 모델을 연결하는 환경 데이터 도구</li>
+<li>oTree: 파이썬 기반의 행동 경제학 및 사회과학 실험 설계 프레임워크</li>
+</ul>
+</div>
+<h3>행동 실험용 프레임워크 oTree 및 오픈소스 브라우저 엔진 프로젝트</h3>
+행동 경제학과 심리학 연구자들 사이에서 활용되는 파이썬 기반 실험 프레임워크 `oTree` 관련 소식도 연구 매체를 통해 전해졌다. 웹 기반의 복잡한 멀티플레이어 행동 실험을 파이썬 코드로 손쉽게 구축할 수 있도록 지원하는 프레임워크다.<br/>
+
+한편 개발자 커뮤니티 GeekNews에서는 파이썬으로 웹 브라우저 엔진의 기초 원리를 직접 구현해보는 책 'Web Browser Engineering (2021)' 프로젝트가 다시 조명받았다. 텍스트 파싱부터 렌더링 엔진의 작동 방식까지 파이썬으로 직접 작성하며 브라우저 내부 구조를 학습하는 가이드다.<br/>
+
+데이터 처리 수준을 넘어 복잡한 웹 렌더링 로직 시뮬레이션부터 인간 행동 연구 플랫폼에 이르기까지 파이썬의 응용 범위가 극도로 넓어졌음을 알 수 있다.<br/>
+<h2 id="sec4">하드웨어 결합 제어 도구와 프로그래밍 언어 생태계 변화</h2>
+<h3>마이크로파이썬 기반 RP2350 아트 매트릭스 하드웨어 제어</h3>
+임베디드 하드웨어 분야에서는 마이크로파이썬(MicroPython)을 활용한 화려한 DIY 프로젝트가 눈길을 끌었다. Hackster.io 보도에 의하면 Pimoroni는 RP2350 마이크로컨트롤러와 마이크로파이썬을 조합해 무려 16,384개의 LED를 제어하는 'Art Matrix' 시스템을 선보였다.<br/>
+
+RP2350 칩셋의 성능과 마이크로파이썬의 직관적인 코딩 환경이 결합하여 대규모 LED 그래픽 출력을 손쉽게 제어하는 구조다. 복잡한 C/C++ 전처리 없이도 파이썬 구문만으로 고성능 피지컬 컴퓨팅 프로젝트를 구현할 수 있음을 보여준 대표 사례다.<br/>
+
+소전력 임베디드 장치부터 대형 디스플레이 제어까지 마이크로파이썬의 적용 가능성이 지속해서 확장되고 있다. 하드웨어 진입 장벽을 낮추는 파이썬의 매력이 경량 칩셋 시장에서도 크게 발휘되는 모습이다.<br/>
+<h3>인접 언어 Rust의 변화와 엔터프라이즈 환경 보안 이슈</h3>
+파이썬 생태계와 긴밀히 영향력을 주고받는 주변 언어 및 보안 동향도 업데이트됐다. InfoWorld는 Rust 프로그래밍 언어에 도입될 4가지 주요 변화를 조명했다. 파이썬의 성능 한계를 극복하기 위해 Rust 모듈을 바인딩해 쓰는 CPython 개발자가 늘어남에 따라 Rust의 변화는 파이썬 생태계에도 직접적인 영향을 미친다.<br/>
+
+한편 엔터프라이즈 시스템 보안 분야에서는 IT Pro와 inkl 보도를 통해 자바(Java) 언어의 심각한 보안 취약점 'Java4Shell'이 발견되었다는 소식이 전해졌다. 특히 이번 Java 취약점 발견 과정에서 AI 기술이 결정적인 역할을 한 것으로 나타나 눈길을 끌었다.<br/>
+
+C/C++, Java 등 전통 인프라 언어의 보안 취약점 진단에 AI가 적극적으로 도입되는 한편, 파이썬 역시 Rust와의 결합을 통해 성능과 메모리 안전성을 동시에 확보하려는 노력을 가속하고 있다.<br/>
+<h2 id="sec5">개발자 교육 현장과 산업계 AI 파이썬 기술 도입</h2>
+<h3>국내 산학 멘토링 교육 성과와 부트캠프 동향</h3>
+국내 교육 현장에서는 파이썬과 AI 기술을 결합한 산학협력 프로젝트 성과가 잇따랐다. 경북신문, 국제뉴스, 다경뉴스 등 보도에 따르면 한국폴리텍대학 로봇캠퍼스가 영천고등학교 학생들을 대상으로 진행한 'AI 멘토링' 프로그램이 성공적으로 마무리됐다. 멘토링에 참여한 영천고 학생들은 로봇기술경진대회에서 동상을 수상하는 성과를 거두었다.<br/>
+
+취업 교육 시장에서는 아이티윌이 'Oracle DBA·DB 엔지니어 취업 부트캠프' 99기 수강생 모집을 시작했다. 데이터베이스 관리 역량과 파이썬 데이터 처리 기술을 함께 다루는 엔터프라이즈 인프라 인재 양성 과정이다.<br/>
+
+청소년 대상 기초 AI 멘토링부터 데이터베이스 취업 부트캠프에 이르기까지, 파이썬 기반 기술 역량은 이제 ICT 교육의 필수 기본기로 자리를 잡았다.<br/>
+<h3>해외 대학 코딩 교육 논쟁과 파이썬 역량 변화</h3>
+해외 대학가에서는 AI 코딩 도구 보급에 따른 파이썬 교육 방식 논쟁이 격화되고 있다. The Michigan Daily 보도에 따르면 미시간대학교 정보대학(U-M School of Information)에서는 코딩 수업 내 AI 도구 활용 허용 여부를 두고 "AI 시대에 학위가 왜 필요한가"라는 주장이 제기되며 교수진과 학생 간 갈등이 벌어졌다.<br/>
+
+AI가 파이썬 코드를 자동으로 생성해 주는 시대가 되면서 대학에서 기존 방식의 파이썬 문법 교육을 고수해야 하는지에 대한 본질적인 의문이 제기된 것이다. 단순 문법 습득보다는 시스템 아키텍처 설계와 보안 검증 능력이 교육의 중심이 되어야 한다는 목소리가 커지고 있다.<br/>
+
+산업 현장에서도 파이썬 활용 패러다임이 변하고 있다. 헬로티 보도에 의하면 자동차 품질 분석 작업에 파이썬 기반 AI 통계 모델을 도입한 결과, 기존 3시간이 소요되던 작업이 5분 만에 완료되는 등 제조 현장의 AX(AI 전환) 속도가 비약적으로 빨라지고 있다.<br/>
+<div style="background-color:#e8f5e9; border-left:5px solid #43a047; padding:20px; margin-bottom:30px; border-radius:4px;">
+<h4 style="margin:0 0 10px 0; color:#2e7d32; font-size:20px;"><b style="color:#2e7d32;">💭 파이썬 생태계를 바라보는 에디터의 시선</b></h4>
+<p>마이크로소프트 PyPI 패키지 탈취 사건은 우리가 누리는 오픈소스 생태계의 편리함 뒤에 얼마나 거대한 보안 위험이 도사리고 있는지 보여준다. 파이썬이 AI와 과학 연구, 임베디드, 제조 현장까지 깊숙이 침투한 만큼, 코드 한 줄을 가져다 쓸 때의 보안 감수성은 그 어느 때보다 중요해졌다.</p>
+<p>이제 개발자에게 요구되는 핵심 역량은 파이썬 문법을 외워 코드를 짜는 것이 아니다. AI 도구가 뿌려주는 코드의 보안 취약점을 식별하고, 불순한 패키지 오염을 가려내는 안목이야말로 AI 시대를 살아가는 파이썬 개발자의 진짜 실력이 될 것이다.</p>
+</div>
+<div style="margin-bottom:30px;">
+<h4 style="margin:0 0 10px 0;">❓ 자주 묻는 질문</h4>
+<h5>Q. PyPI 마이크로소프트 패키지 해킹 내용은 무엇인가요?</h5>
+<p>마이크로소프트의 공식 `agent-framework` PyPI 패키지에 공격자가 악성 코드를 주입한 사건이다. 파이썬 실행 시 자동으로 동작하는 `.pth` 훅 메커니즘을 사용해 개발자의 Azure 및 CI/CD 클라우드 자격 증명을 탈취했다.</p>
+<h5>Q. 파이썬 개발자가 주의해야 할 최근 보안 위협은?</h5>
+<p>유명 빅테크 기업이나 공식 기관이 관리하는 파이썬 패키지 이름으로 위장하거나, 실제 공식 패키지를 탈취해 악성 코드를 주입하는 공급망 공격이다. 설치 시 로컬 환경이나 빌드 서버의 자격 증명이 유출될 수 있어 주의가 필요하다.</p>
+<h5>Q. 클라우드 자격 증명 탈취를 막으려면 어떻게 해야 하나요?</h5>
+<p>오픈소스 패키지 설치 시 의존성을 엄격히 검증하고 무결성을 확인해야 한다. 또한 CI/CD 파이프라인과 로컬 개발 환경에 최소한의 클라우드 접근 권한만 부여하는 권한 관리 통제가 필수적이다.</p>
+</div>
+<div style="background-color:#f3f4f8; border-left:5px solid #1b1e33; padding:20px; margin-bottom:30px; border-radius:4px;"><h4 style="margin:0 0 10px 0; color:#1b1e33; font-size:20px;"><b>📅 「파이썬 뉴스 정리」 지난 회차</b></h4><ul style="margin:0; padding-left:20px; line-height:1.9;"><li style="margin-bottom:8px;"><a href="https://snowmans.sunphs2002.workers.dev/posts/2464-python-ecosystem-update-ai-agents-security-patches-and-globa.html" style="color:#1976d2; text-decoration:none;">Python Ecosystem Update: AI Agents, Security Patches, and Global Coding Initiatives</a></li><li style="margin-bottom:8px;"><a href="https://snowmans.sunphs2002.workers.dev/posts/2416-python-ecosystem-update-edge-ai-expansion-experimental-free.html" style="color:#1976d2; text-decoration:none;">Python Ecosystem Update: Edge AI Expansion, Experimental Free-Threading, and AI Agent Quality Control</a></li><li style="margin-bottom:8px;"><a href="https://snowmans.sunphs2002.workers.dev/posts/2369-python-ecosystem-expands-into-quantum-computing-while-develo.html" style="color:#1976d2; text-decoration:none;">Python Ecosystem Expands into Quantum Computing while Developer Debates Rage Over Type Enforcement</a></li><li style="margin-bottom:8px;"><a href="https://snowmans.sunphs2002.workers.dev/posts/2343-python-ecosystem-briefing-supply-chain-attack-hijacks-1835-r.html" style="color:#1976d2; text-decoration:none;">Python Ecosystem Briefing: Supply Chain Attack Hijacks 1,835 Repos as AI Agent Tools Expand</a></li><li style="margin-bottom:8px;"><a href="https://snowmans.sunphs2002.workers.dev/posts/2317-the-passing-of-a-python-pioneer-meets-a-hardware-accelerated.html" style="color:#1976d2; text-decoration:none;">The Passing of a Python Pioneer Meets a Hardware-Accelerated AI Boom</a></li></ul></div><div style="text-align:center; margin-bottom:30px;"><a href="https://link.coupang.com/a/gBEELovsWa" referrerpolicy="unsafe-url" rel="nofollow noopener sponsored" target="_blank"><img alt="키루에 슬라이딩 리빙박스 옷장정리 슬라이딩 수납함 접이식 슬라이딩 옷정리트레이, 4개, 화이트 | 검은색눈사람" decoding="async" height="240" loading="lazy" src="https://img4a.coupangcdn.com/image/affiliate/banner/40217284aa0e3f8617b0a2e47333a91e@2x.jpg" style="border-radius:6px;" width="120"/></a><p style="margin:8px 0 0; font-size:12px; color:#999;">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p></div>
+<p style="text-align:right; color:#888; font-size:13px; margin-bottom:10px;">거대해진 파이썬 생태계만큼이나 개발자가 짊어져야 할 보안 책임의 무게도 함께 늘어나고 있다.</p>
+
+<p style="text-align:center; color:#666666;">매일 아침 올라오는 「파이썬 뉴스 정리」 시리즈입니다. 다른 날의 정리는 #데일리파이썬 태그에서 모아 볼 수 있어요.</p><p>#파이썬보안이슈 #PyPI패키지해킹 #마이크로소프트에이전트프레임워크 #클라우드자격증명탈취 #파이썬개발자보안 #PyPI악성코드 #AGUI #마이크로파이썬 #CarbonTracker #oTree</p><p style="text-align:right; color:#b0b0b0;">ⓒ 검은색눈사람 · sunphs2002</p><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "[데일리 파이썬] 파이썬 보안 이슈: 마이크로소프트 PyPI 패키지 해킹 사건", "description": "11월 18일 발생한 가장 큰 파이썬 보안 이슈는 마이크로소프트의 공식 에이전트 프레임워크 패키지가 PyPI에서 탈취당해 클라우드 자격 증명이 유출된 사건이다. 개발자가 오픈소스 생태계를 신뢰하고 가져다 쓰는 과정에서 인프라 핵심 권한이 통째로 털릴 수 있다는 경고등이", "image": ["https://blacksnowmans.github.io/blacksnowman/img/post2497_1.jpg"], "datePublished": "2026-11-19T09:13:16.537674+09:00", "dateModified": "2026-11-19T09:13:16.537674+09:00"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PyPI 마이크로소프트 패키지 해킹 내용은 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": "마이크로소프트의 공식 `agent-framework` PyPI 패키지에 공격자가 악성 코드를 주입한 사건이다. 파이썬 실행 시 자동으로 동작하는 `.pth` 훅 메커니즘을 사용해 개발자의 Azure 및 CI/CD 클라우드 자격 증명을 탈취했다."}}, {"@type": "Question", "name": "파이썬 개발자가 주의해야 할 최근 보안 위협은?", "acceptedAnswer": {"@type": "Answer", "text": "유명 빅테크 기업이나 공식 기관이 관리하는 파이썬 패키지 이름으로 위장하거나, 실제 공식 패키지를 탈취해 악성 코드를 주입하는 공급망 공격이다. 설치 시 로컬 환경이나 빌드 서버의 자격 증명이 유출될 수 있어 주의가 필요하다."}}, {"@type": "Question", "name": "클라우드 자격 증명 탈취를 막으려면 어떻게 해야 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "오픈소스 패키지 설치 시 의존성을 엄격히 검증하고 무결성을 확인해야 한다. 또한 CI/CD 파이프라인과 로컬 개발 환경에 최소한의 클라우드 접근 권한만 부여하는 권한 관리 통제가 필수적이다."}}]}</script>
+</main>
+<footer class="foot"><a href="../index.html">← 전체 글</a> · <a href="../privacy.html">Privacy</a></footer>
+</body></html>

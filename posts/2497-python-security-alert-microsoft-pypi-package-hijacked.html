@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python Security Alert: Microsoft PyPI Package Hijacked — Black Snowman Brief</title>
+<meta name="description" content="A major supply chain attack has compromised the official Microsoft &quot;agent-framework&quot; package on PyPI (Python Package Index), the central repository for Python s">
+<link rel="canonical" href="https://snowmans.sunphs2002.workers.dev/posts/2497-python-security-alert-microsoft-pypi-package-hijacked.html">
+<meta property="og:title" content="Python Security Alert: Microsoft PyPI Package Hijacked">
+<meta property="og:description" content="A major supply chain attack has compromised the official Microsoft &quot;agent-framework&quot; package on PyPI (Python Package Index), the central repository for Python s">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://blacksnowmans.github.io/blacksnowman/img/post2497_1.jpg">
+<link rel="stylesheet" href="../style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6VH6TFNDE1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6VH6TFNDE1');</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d540751729ea4b4a813e081466d5b8f3"}'></script>
+</head><body>
+<header class="top"><a class="home" href="../index.html">Black Snowman Brief</a><a class="lang-switch" href="../ko/posts/2497-python-security-alert-microsoft-pypi-package-hijacked.html">한국어</a></header>
+<main class="post">
+  <h1>Python Security Alert: Microsoft PyPI Package Hijacked</h1>
+  <p class="meta"><time datetime="2026-11-19">November 19, 2026</time></p>
+  <p><img src="https://blacksnowmans.github.io/blacksnowman/img/post2497_1.jpg" alt="Python Security Alert: Microsoft PyPI Package Hijacked | 검은색눈사람"></p>
+  <p>A major supply chain attack has compromised the official Microsoft "agent-framework" package on PyPI (Python Package Index), the central repository for Python software, exposing cloud credentials and sensitive CI/CD pipeline data.</p>
+<ul>
+<li><b>What happened:</b> Attackers hijacked a release of Microsoft’s official framework, injecting malicious code that triggers during package installation.</li>
+<li><b>How it works:</b> The malware exploits ".pth" hooks—files that execute automatically when Python starts—to covertly harvest Azure and CI/CD authentication credentials from developer machines.</li>
+<li><b>Who is affected:</b> Any developer or automated build system that installed the compromised version of the package.</li>
+<li><b>The takeaway:</b> Big Tech branding is no longer a guarantee of safety; developers must now treat even "official" library installations with extreme caution.</li>
+</ul>
+<h2>Supply Chain Vulnerability in the AI Era</h2>
+<p>This incident marks a dangerous evolution in software supply chain attacks. By targeting a high-profile package from a major company, attackers have bypassed the typical developer trust threshold. Because the malware executes as soon as the environment loads, it grants attackers immediate access to cloud infrastructure, effectively turning a local development machine into a gateway for corporate network infiltration.</p>
+<p>For developers, this serves as a brutal reminder that "pip install" is not a low-risk activity. The reliance on open-source packages now requires a shift toward "Zero Trust" dependency management. Organizations must move beyond surface-level trust and implement strict integrity checks, code scanning, and the "principle of least privilege" within CI/CD pipelines to ensure that compromised packages cannot reach critical production environments.</p>
+<h2>Shifting Sands in the Python Ecosystem</h2>
+<p>While security remains the top concern, the broader Python ecosystem saw significant movement on November 18. New tools are emerging to simplify AI integration, such as the lightweight "AG-UI Protocol" and a 9.3MB standalone coding agent that operates without complex runtime environments. These tools reflect a broader trend of moving away from bloated, heavy frameworks toward modular, specialized solutions.</p>
+<p>In the academic and hardware sectors, Python continues to cement its dominance. From "CatHub" and "CarbonTracker" for scientific data analysis to MicroPython-based hardware control for complex LED matrices (like the new 16,384-LED "Art Matrix" system), the language is handling everything from high-level AI modeling to low-level physical computing. As the industry grapples with the integration of AI coding assistants, the core value of a developer is shifting: it is no longer about memorizing syntax, but about having the judgment to audit AI-generated code and the vigilance to detect malicious dependencies before they reach the codebase.</p><p style="text-align:right; color:#b0b0b0;">ⓒ 검은색눈사람 · sunphs2002</p>
+</main>
+<footer class="foot"><a href="../index.html">← All posts</a> · <a href="../privacy.html">Privacy</a></footer>
+</body></html>
